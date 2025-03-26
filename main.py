@@ -7,6 +7,8 @@ import requests
 from discord import app_commands
 from dotenv import load_dotenv
 
+import webserver
+
 # Load .env file
 load_dotenv()
 
@@ -105,5 +107,5 @@ async def losses(interaction: discord.Interaction, summoner: str):
 
     await interaction.followup.send(f"{summoner_name}#{summoner_tag} lost {losses} matches and died {total_deaths} times in the past week.")
 
-
+webserver.keep_alive()
 bot.run(DISCORD_BOT_TOKEN)
