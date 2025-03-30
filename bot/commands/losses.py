@@ -7,7 +7,6 @@ from discord import app_commands
 from configuration import RIOT_API_KEY
 from general.lol_functions import create_stats_embed, get_losses_in_last_week
 
-# Riot API key and region
 if not RIOT_API_KEY:
     logging.error("Error: RIOT_API_KEY is missing from the .env file!")
     exit(1)

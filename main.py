@@ -3,35 +3,33 @@ import logging
 import threading
 
 # Configuration
-import configuration
+import configuration  # keep it
 from bot import bot
 from scheduled_tasks import on_game_change
 from webserver import server
 
-# from scheduled_tasks import scheduler
-
 
 def start_bot():
-    print("Discord bot indítása...")
+    print("Running Discord bot...")
     bot.start()
 
 
 def start_webserver():
-    print("Webszerver indítása...")
+    print("Running webserver...")
     server.run()
 
 
 def start_scheduler():
-    print("Időzített feladatok ütemezése...")
+    print("Running scheduler...")
     on_game_change.main()
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Indítsd el a kívánt modult.")
-    parser.add_argument("--bot", action="store_true", help="Discord bot indítása")
-    parser.add_argument("--web", action="store_true", help="Webszerver indítása")
-    parser.add_argument("--tasks", action="store_true", help="Időzített feladatok indítása")
-    parser.add_argument("--all", action="store_true", help="Minden modul párhuzamos futtatása")
+    parser = argparse.ArgumentParser(description="Launch the desired module")
+    parser.add_argument("--bot", action="store_true", help="Run Discord bot")
+    parser.add_argument("--web", action="store_true", help="Run webserver")
+    parser.add_argument("--tasks", action="store_true", help="Run scheduler")
+    parser.add_argument("--all", action="store_true", help="Running all module paralell")
     args = parser.parse_args()
 
     threads = []

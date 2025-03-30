@@ -92,6 +92,7 @@ async def fetch_match_data(session: aiohttp.ClientSession, match_id):
 
 
 async def count_losses_and_deaths(session: aiohttp.ClientSession, match_ids: Iterable[Any], puuid: str):
+    """Counts the number of deaths and losses from given matches"""
     losses: int = 0
     total_deaths: int = 0
 
@@ -111,6 +112,7 @@ async def count_losses_and_deaths(session: aiohttp.ClientSession, match_ids: Ite
 
 
 async def get_losses_in_last_week(session: aiohttp.ClientSession, summoner_name: str, summoner_tag: str):
+    """Counts the number of deaths and losses from last one week"""
     try:
         puuid = await get_puuid(session, summoner_name, summoner_tag)
     except Exception as e:
@@ -127,6 +129,7 @@ async def get_losses_in_last_week(session: aiohttp.ClientSession, summoner_name:
 
 
 def create_stats_embed(losses: int, total_deaths: int, summoner_name: str) -> Embed:
+    """Creates a discord embed which presents the number of deaths and losses"""
     if summoner_name.lower() == "onthefumes":
         color = Color.red()
         thumbnail_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadmin.esports.gg%2Fwp-content%2Fuploads%2F2024%2F05%2FHoL2024_Azir_All-Roads-Lead-to-Me_FINAL.png&f=1&nofb=1&ipt=113d53b2a04d3176bc038f31b05ef5928bf5e154f5289392db07de5fccbe427a&ipo=images"

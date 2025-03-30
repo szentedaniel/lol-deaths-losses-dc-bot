@@ -83,9 +83,7 @@ async def check_for_new_game():
 
 
 async def weekly_stats():
-    """Check the last game result and send a message if it changed."""
-    global previous_match_id
-    global first_check_for_new_game
+    """Count how many losses and deaths were in the last one week"""
     async with aiohttp.ClientSession() as session:
         try:
             losses, total_deaths = await get_losses_in_last_week(session, SUMMONER_NAME, SUMMONER_TAG)
@@ -102,8 +100,8 @@ def job_check_for_new_game():
 
 
 def job_weekly_stats():
-    """Wrap the check_for_new_game in a job for APScheduler."""
-    asyncio.run(check_for_new_game())
+    """Wrap the weekly_stats in a job for APScheduler."""
+    asyncio.run(weekly_stats())
 
 
 def main():

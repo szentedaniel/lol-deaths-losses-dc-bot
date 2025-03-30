@@ -11,6 +11,7 @@ if not DISCORD_BOT_TOKEN:
 
 
 def start():
+    """Starts the discord bot"""
     try:
         intents = Intents.default()
         bot = Client(intents=intents)
