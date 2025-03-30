@@ -111,7 +111,7 @@ def main():
     scheduler = BackgroundScheduler()
 
     # Schedule the task to run every 1 minutes
-    scheduler.add_job(job_check_for_new_game, "interval", minutes=1)
+    # scheduler.add_job(job_check_for_new_game, "interval", minutes=1)
     # Schedule the task to run every Sunday at 20:00
     scheduler.add_job(job_weekly_stats, "cron", day_of_week="sun", hour=20, minute=00)
 
