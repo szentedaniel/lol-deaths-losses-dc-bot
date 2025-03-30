@@ -20,4 +20,4 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED=1
 
 # Run the bot
-CMD ["python", "main.py"]
+CMD ["python", "main.py", "--all"]

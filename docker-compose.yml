@@ -6,4 +6,4 @@ services:
     container_name: discord-bot
     restart: unless-stopped
     env_file: .env
-    command: ["python", "main.py"]
+    command: ["python", "main.py", "--all"]
