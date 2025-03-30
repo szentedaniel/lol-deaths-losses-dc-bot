@@ -127,18 +127,19 @@ async def get_losses_in_last_week(session: aiohttp.ClientSession, summoner_name:
 
 
 def create_stats_embed(losses: int, total_deaths: int, summoner_name: str) -> Embed:
-    embed = Embed(title="Stats from this week", color=Color.red())
     if summoner_name.lower() == "onthefumes":
-        embed.set_thumbnail(
-            url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadmin.esports.gg%2Fwp-content%2Fuploads%2F2024%2F05%2FHoL2024_Azir_All-Roads-Lead-to-Me_FINAL.png&f=1&nofb=1&ipt=113d53b2a04d3176bc038f31b05ef5928bf5e154f5289392db07de5fccbe427a&ipo=images"
-        )
-        embed.set_footer(text="Pathetic")
+        color = Color.red()
+        thumbnail_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadmin.esports.gg%2Fwp-content%2Fuploads%2F2024%2F05%2FHoL2024_Azir_All-Roads-Lead-to-Me_FINAL.png&f=1&nofb=1&ipt=113d53b2a04d3176bc038f31b05ef5928bf5e154f5289392db07de5fccbe427a&ipo=images"
+        footer_text = "Pathetic"
     else:
-        embed.set_thumbnail(
-            url="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi0.kym-cdn.com%2Fphotos%2Fimages%2Foriginal%2F001%2F244%2F891%2Fd1f.png&f=1&nofb=1&ipt=9bdcd3a6f4cc0ecd278b0e0199be98a1015febc9b3291931321e0fa6c7feac21&ipo=images"
-        )
-        embed.set_footer(text="Outstanding")
+        color = Color.green()
+        thumbnail_url = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi0.kym-cdn.com%2Fphotos%2Fimages%2Foriginal%2F001%2F244%2F891%2Fd1f.png&f=1&nofb=1&ipt=9bdcd3a6f4cc0ecd278b0e0199be98a1015febc9b3291931321e0fa6c7feac21&ipo=images"
+        footer_text = "Outstanding"
 
+    embed = Embed(title=f"{summoner_name}'s weekly stats", color=color)
     embed.add_field(name="Stat", value="Losses: \nDeaths:")
     embed.add_field(name="Counter", value=f"{losses} \n{total_deaths}", inline=True)
+    embed.set_thumbnail(url=thumbnail_url)
+    embed.set_footer(text=footer_text)
+
     return embed
